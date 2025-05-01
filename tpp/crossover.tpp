@@ -8,13 +8,6 @@ using namespace std;
 // Pass by const ref:    void foo(const std::vector<int>& v)// read-only, efficient
 // Pass by pointer:      void foo(std::vector<int>* v)      // optional/nullable
 
-float random_float(float min, float max) {
-    static std::random_device rd;  // Obtain a random number from hardware
-    static std::mt19937 eng(rd()); // Seed the generator
-    std::uniform_real_distribution<> distr(min, max); // Define the range
-    return distr(eng);
-}
-
 /**
  * @brief Performs one-point crossover on two parent vectors to produce two child vectors.
  * @param parent1 The first parent vector.
