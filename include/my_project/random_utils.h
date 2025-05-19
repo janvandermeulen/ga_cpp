@@ -1,2 +1,0 @@
-#pragma once
-float random_float(float min, float max);
