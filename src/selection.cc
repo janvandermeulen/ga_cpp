@@ -34,7 +34,6 @@ std::vector<DiscreteIndividual> tournament_selection::operator()(
                     return a.get_fitness() > b.get_fitness();
                 });
         }
-        // std::cout << "Tournament bracket size: " << tournament_bracket.size() << std::endl;
         if (tournament_bracket.size() >= 2) {
             selected_individuals.push_back(tournament_bracket[0]);
             selected_individuals.push_back(tournament_bracket[1]);
@@ -45,7 +44,6 @@ std::vector<DiscreteIndividual> tournament_selection::operator()(
         }
         tournament_bracket.clear();
     }
-    // std::cout << "Populatino size: " << population.size() << std::endl;
     return selected_individuals;
 }
 

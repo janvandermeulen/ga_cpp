@@ -23,21 +23,22 @@ int main() {
     using crossover_function_type = std::function<std::pair<DiscreteIndividual, DiscreteIndividual>(
         DiscreteIndividual&, DiscreteIndividual&
     )>;
-    selection_function_type tournament_fn = tournament_selection(4, false);
-    crossover_function_type one_point_fn = one_point_crossover;
+    bool minimize = true;
+    selection_function_type tournament_fn = tournament_selection(4, minimize);
+    crossover_function_type crossover_fn = uniform_crossover;
 
     DiscreteGeneticAlgorithm ga(
         40,
         {0, 0, 0},
         {1000, 1000, 1000},
-        false,
+        minimize,
         0.01,
         50,
         10,
         10000,
         1000,
         tournament_fn,
-        one_point_fn,
+        crossover_fn,
         fitness_function
     );
 
