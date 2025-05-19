@@ -49,7 +49,6 @@ DiscreteGeneticAlgorithm::DiscreteGeneticAlgorithm(
     std::vector<DiscreteIndividual> DiscreteGeneticAlgorithm::create_offspring() {
         std::vector<DiscreteIndividual> offspring;
         for (size_t i = 0; i < population_size; i += 2) {
-            std::cout << "Creating offspring from individuals " << i << " and " << i + 1 << std::endl;
             auto children = crossover_fn(population[i], population[i + 1]);
             mutate(children.first, mutation_rate);
             mutate(children.second, mutation_rate);

@@ -27,9 +27,9 @@ int main() {
     crossover_function_type one_point_fn = one_point_crossover;
 
     DiscreteGeneticAlgorithm ga(
-        100,
+        40,
         {0, 0, 0},
-        {10, 10, 10},
+        {1000, 1000, 1000},
         false,
         0.01,
         50,

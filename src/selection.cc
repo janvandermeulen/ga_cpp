@@ -13,7 +13,6 @@ std::vector<DiscreteIndividual> tournament_selection::operator()(
     std::vector<DiscreteIndividual>& population,
     std::vector<DiscreteIndividual>& offspring
 ) const {
-    std::cout << "Performing tournament selection with size: " << tournament_size << std::endl;
     std::vector<DiscreteIndividual> selected_individuals;
     std::vector<DiscreteIndividual> combined = population;
     combined.insert(combined.end(), offspring.begin(), offspring.end());
@@ -22,15 +21,13 @@ std::vector<DiscreteIndividual> tournament_selection::operator()(
     std::vector<DiscreteIndividual> tournament_bracket;
     while (j < population.size() && i < combined.size()) {
         for (int i = 0; i < tournament_size; ++i) {
-            std::cout << "Going into loop with value: i = " << i << std::endl;
-            std::cout << "List index: " << (j*4 + i)% combined.size() << std::endl;
-            tournament_bracket.push_back(combined[(j*4 + i)% combined.size()]);
+            tournament_bracket.push_back(combined[(j*2 + i)% combined.size()]);
         }
         std::sort(tournament_bracket.begin(), tournament_bracket.end(),
             [](const DiscreteIndividual& a, const DiscreteIndividual& b) {
                 return a.get_fitness() > b.get_fitness();
             });
-        std::cout << "Tournament bracket size: " << tournament_bracket.size() << std::endl;
+        // std::cout << "Tournament bracket size: " << tournament_bracket.size() << std::endl;
         if (tournament_bracket.size() >= 2) {
             selected_individuals.push_back(tournament_bracket[0]);
             selected_individuals.push_back(tournament_bracket[1]);
@@ -41,7 +38,7 @@ std::vector<DiscreteIndividual> tournament_selection::operator()(
         }
         tournament_bracket.clear();
     }
-    std::cout << "Populatino size: " << population.size() << std::endl;
+    // std::cout << "Populatino size: " << population.size() << std::endl;
     return selected_individuals;
 }
 
