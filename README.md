@@ -22,8 +22,6 @@ DiscreteGeneticAlgorithm:
     - upper_bounds: vector of upper bounds for each gene
     # Hyperparameters - This can be generalized later, to support different types of GAs
     - Mutation_rate: double
-    - Crossover_rate: double
-    - Selection_rate: double
     # Stopping Criteria 
     - Max_generations: int
     - Max_generations_no_improvement: int

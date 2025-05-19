@@ -32,7 +32,7 @@ private:
     selection_function_type selection_fn;
     crossover_function_type crossover_fn;
     std::function<double(std::vector<int>&)> fitness_function;
-
+    int evaluations = 0;
 public:
     DiscreteGeneticAlgorithm(
         int population_size,

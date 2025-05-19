@@ -11,9 +11,9 @@ using selection_function_type = std::function<std::vector<DiscreteIndividual>(
 
 struct tournament_selection {
     int tournament_size;
-
-    tournament_selection(int size = 4);
-
+    bool minimize; // Whether the fitness function minimizes or maximizes
+    tournament_selection(int size, bool minimize);
+    
     std::vector<DiscreteIndividual> operator()(
         std::vector<DiscreteIndividual>& population,
         std::vector<DiscreteIndividual>& offspring

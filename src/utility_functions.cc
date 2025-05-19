@@ -25,15 +25,12 @@ void shuffle_population(std::vector<DiscreteIndividual>& population) {
 }
 
 DiscreteIndividual bestOfPopulation(std::vector<DiscreteIndividual>& population, bool minimize) {
-    if (minimize) {
-        return *std::min_element(population.begin(), population.end(),
-            [](const DiscreteIndividual& a, const DiscreteIndividual& b) {
-                return a.get_fitness() < b.get_fitness();
-            });
-    } else {
-        return *std::max_element(population.begin(), population.end(),
-            [](const DiscreteIndividual& a, const DiscreteIndividual& b) {
-                return a.get_fitness() < b.get_fitness();
-            });
+    DiscreteIndividual best_individual = population[0];
+    for (const auto& individual : population) {
+        if ((minimize && individual.get_fitness() < best_individual.get_fitness()) ||
+            (!minimize && individual.get_fitness() > best_individual.get_fitness())) {
+            best_individual = individual;
+        }
     }
+    return best_individual;
 }
